@@ -14,8 +14,10 @@ jobs:
           node-version: '16.15.0'
       - name: Install Dependencies
         run: npm install
+      - name: Angular cli pages
+        run: npm install -g angular-cli-pages
       - name: Build
-        run: ng build --prod --base-href https://github.com/MarcosFerreira17/angular-teste
+        run: ng build --prod --base-href="https://github.com/MarcosFerreira17/angular-teste"
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.2
         with:
