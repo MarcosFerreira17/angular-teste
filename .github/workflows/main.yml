@@ -30,6 +30,6 @@ jobs:
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.angulartoken }}
+        github_token: ${{ secrets.ANGULARTOKEN }}
         publish_dir: dist/angular-teste
         enable_jekyll: true
