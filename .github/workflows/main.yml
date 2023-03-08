@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -8,25 +8,18 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v2.1.5
-      with:
-        node-version: 16.15.0
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build
-      run: npm run build --prod
-
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@3.8.1
-      with:
-        branch: gh-pages
-        folder: dist
-
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.15.0'
+      - name: Install Dependencies
+        run: npm install
+      - name: Build Angular App
+        run: npm run build --prod
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/teste
