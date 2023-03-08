@@ -15,10 +15,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: ng build --prod --base-href /teste
+        run: ng build --prod --base-href /angular-teste
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.2
         with:
           branch: main
-          folder: dist/teste
+          folder: dist/angular-teste
           clean: true
