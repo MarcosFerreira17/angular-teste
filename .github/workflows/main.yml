@@ -25,11 +25,11 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.ANGULARTOKEN }}
+        run: |
+          npm run --deploy
         with:
           publish_dir: ./dist/teste/
           publish_branch: gh-pages
-        run: |
-          npm run --deploy
 
       # - name: Deploy to GitHub Pages
       #   uses: angular-cli-ghpages
