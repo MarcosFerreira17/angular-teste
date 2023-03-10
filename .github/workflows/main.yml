@@ -23,7 +23,7 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.ANGULARTOKEN }}
+          token: ${{ secrets.ANGULARTOKEN }}
           branch: gh-pages # The branch the action should deploy to.
           folder: ./dist/angular-teste # The folder the action should deploy.
 
