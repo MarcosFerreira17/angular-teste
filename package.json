@@ -1,11 +1,10 @@
 {
-  "name": "teste",
+  "name": "angular-teste",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "gh-build": "ng build --configuration github --base-href /angular-teste/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -28,7 +27,6 @@
     "@angular/cli": "~15.1.2",
     "@angular/compiler-cli": "^15.1.0",
     "@types/jasmine": "~4.3.0",
-    "angular-cli-ghpages": "^1.0.5",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
