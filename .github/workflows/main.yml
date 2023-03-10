@@ -29,5 +29,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.ANGULARTOKEN }}
-          publish_dir: ./dist/teste
+          publish_dir: dist/teste
           publish_branch: gh-pages
