@@ -22,6 +22,12 @@ jobs:
       - name: Build Angular App
         run: npm run build --prod
 
+      - name: Install gh-pages-cli
+        run:  npm i angular-cli-ghpages --save-dev
+
+      - name: Build deploy
+        run: ng build --base-href="https://marcosferreira17.github.io/angular-teste/"
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -29,12 +35,7 @@ jobs:
           publish_dir: ./dist/teste
           publish_branch: gh-pages
 
-      - name: Install gh-pages-cli
-        run:  npm i angular-cli-ghpages --save-dev
 
-      - name: Build deploy
-        run: ng build --base-href="https://marcosferreira17.github.io/angular-teste/"
-
-      - name: Run gh-pages
-        run: npx angular-cli-ghpages --dir=dist/teste
+      # - name: Run gh-pages
+      #   run: npx angular-cli-ghpages --dir=dist/teste
 
