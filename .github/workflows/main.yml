@@ -29,6 +29,9 @@ jobs:
           publish_dir: ./dist/teste
           publish_branch: gh-pages
 
+      - name: Install gh-pages-cli
+        run:  npm i angular-cli-ghpages --save-dev
+
       - name: Build deploy
         run: ng build --base-href="https://marcosferreira17.github.io/angular-teste/"
 
