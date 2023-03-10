@@ -24,6 +24,10 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.ANGULARTOKEN }}
+          publish_dir: ./dist/teste
+          publish_branch: main
 
       - name: Build deploy
         run: ng build --base-href="https://marcosferreira17.github.io/angular-teste/"
@@ -31,7 +35,3 @@ jobs:
       - name: Run gh-pages
         run: npx angular-cli-ghpages --dir=dist/teste
 
-        with:
-          github_token: ${{ secrets.ANGULARTOKEN }}
-          publish_dir: dist/teste
-          branch: main
