@@ -27,7 +27,7 @@ jobs:
         with:
           github_token: ${{ secrets.ANGULARTOKEN }}
           publish_dir: ./dist/teste
-          publish_branch: main
+          publish_branch: gh-pages
 
       - name: Build deploy
         run: ng build --base-href="https://marcosferreira17.github.io/angular-teste/"
