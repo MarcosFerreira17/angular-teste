@@ -27,10 +27,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: npx angular-cli-ghpages --dir=dist/teste
-        with:
-          github_token: ${{ secrets.ANGULARTOKEN }}
-          publish_dir: dist/teste
-          publish_branch: gh-pages
+
 
       # - name: Deploy to GitHub Pages
       #   uses: peaceiris/actions-gh-pages@v3
