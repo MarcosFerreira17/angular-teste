@@ -1,47 +1,75 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages via angular-cli-ghpages
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.x'
 
-      - name: Install Dependencies
-        run: npm install && npm i angular-cli-ghpages --save-dev
-
-      - name: Build Application
-        run: npm run build --prod --base-href teste --name="MarcosFerreira17" --email="marcosfw7@outlook.com" --no-silent
-
-      - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.ANGULARTOKEN }}
-        run: |
-          npm run --deploy
-        with:
-          publish_dir: ./dist/teste/
-          publish_branch: gh-pages
-
-      # - name: Deploy to GitHub Pages
-      #   uses: angular-cli-ghpages
-      #   with:
-        # publish_dir: ./dist/teste/
-        #   publish_branch: gh-pages
-      #     github_token: ${{ secrets.ANGULARTOKEN }}
+    - name: Prepare and deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.ANGULARTOKEN }}
+      run: |
+        npm install
+        npm run ng -- deploy --base-href=/angular-teste/ --name="MarcosFerreira17" --email="marcosfw7@outlook.com" --no-silent
 
 
-      # - name: Deploy to GitHub Pages
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.ANGULARTOKEN }}
-      #     publish_dir: ./dist/teste/
-      #     publish_branch: gh-pages
+
+
+
+# name: Deploy to GitHub Pages
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '16.x'
+
+#       - name: Install Dependencies
+#         run: npm install && npm i angular-cli-ghpages --save-dev
+
+#       - name: Build Application
+#         run: npm run build --prod --base-href teste --name="MarcosFerreira17" --email="marcosfw7@outlook.com" --no-silent
+
+#       - name: Deploy to GitHub Pages
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.ANGULARTOKEN }}
+#         run: |
+#           npm run --deploy
+#         with:
+#           publish_dir: ./dist/teste/
+#           publish_branch: gh-pages
+
+#       # - name: Deploy to GitHub Pages
+#       #   uses: angular-cli-ghpages
+#       #   with:
+#         # publish_dir: ./dist/teste/
+#         #   publish_branch: gh-pages
+#       #     github_token: ${{ secrets.ANGULARTOKEN }}
+
+
+#       # - name: Deploy to GitHub Pages
+#       #   uses: peaceiris/actions-gh-pages@v3
+#       #   with:
+#       #     github_token: ${{ secrets.ANGULARTOKEN }}
+#       #     publish_dir: ./dist/teste/
+#       #     publish_branch: gh-pages
