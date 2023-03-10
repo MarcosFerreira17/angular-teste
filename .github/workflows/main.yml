@@ -1,29 +1,59 @@
-name: Deploy to GitHub Pages via angular-cli-ghpages
+name: Github Pages Deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - "main"
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [16.x]
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v1
 
-    - name: Use Node.js 16.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
+      - name: Install and build
+        working-directory: ./teste
+        run: npm install && npm run gh-build && cp dist/teste/index.html dist/teste/404.html
 
-    - name: Install ghpages
-      run: npm i angular-cli-ghpages --save-dev
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: teste/dist/teste # The folder the action should deploy.
 
-    - name: Prepare and deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.ANGULARTOKEN }}
-      run: |
-        npm install
-        npm run --deploy --base-href=/angular-teste/ --name="MarcosFerreira17" --email="marcosfw7@outlook.com" --no-silent
+
+# name: Deploy to GitHub Pages via angular-cli-ghpages
+
+# on: [push]
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
+
+#     - name: Use Node.js 16.x
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: '16.x'
+
+#     - name: Install ghpages
+#       run: npm i angular-cli-ghpages --save-dev
+
+#     - name: Prepare and deploy
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.ANGULARTOKEN }}
+#       run: |
+#         npm install
+#         npm run --deploy --base-href=/angular-teste/ --name="MarcosFerreira17" --email="marcosfw7@outlook.com" --no-silent
 
 
 
