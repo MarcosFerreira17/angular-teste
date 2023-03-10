@@ -25,15 +25,18 @@ jobs:
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.ANGULARTOKEN }}
+          publish_dir: ./dist/teste/
+          publish_branch: gh-pages
         run: |
           npm run --deploy --base-href=/angular-teste/ --name="MarcosFerreira17" --email="marcosfw7@outlook.com" --no-silent
 
       # - name: Deploy to GitHub Pages
       #   uses: angular-cli-ghpages
       #   with:
+        # publish_dir: ./dist/teste/
+        #   publish_branch: gh-pages
       #     github_token: ${{ secrets.ANGULARTOKEN }}
-      #     publish_dir: ./dist/teste/
-      #     publish_branch: gh-pages
+
 
       # - name: Deploy to GitHub Pages
       #   uses: peaceiris/actions-gh-pages@v3
