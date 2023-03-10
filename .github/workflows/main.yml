@@ -15,12 +15,15 @@ jobs:
       with:
         node-version: '16.x'
 
+    - name: Install ghpages
+      run: npm i angular-cli-ghpages --save-dev
+
     - name: Prepare and deploy
       env:
         GITHUB_TOKEN: ${{ secrets.ANGULARTOKEN }}
       run: |
         npm install
-        npm run ng -- deploy --base-href=/angular-teste/ --name="MarcosFerreira17" --email="marcosfw7@outlook.com" --no-silent
+        npm run --deploy --base-href=/angular-teste/ --name="MarcosFerreira17" --email="marcosfw7@outlook.com" --no-silent
 
 
 
